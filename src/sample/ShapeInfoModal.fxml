@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="160.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ShapeInfoModalController">
+   <children>
+      <Button fx:id="deleteShapeBtn" layoutX="298.0" layoutY="121.0" mnemonicParsing="false" onAction="#deleteShape" prefHeight="25.0" prefWidth="121.0" text="Удалить" />
+      <Label layoutX="56.0" layoutY="55.0" text="Периметр" />
+      <Label layoutX="268.0" layoutY="55.0" text="Площадь" />
+      <Text fx:id="perimeterText" layoutX="44.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="squareText" layoutX="256.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Label layoutX="56.0" layoutY="14.0" text="Данные из БД:" />
+      <Text fx:id="databaseInfo" layoutX="204.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   </children>
+</AnchorPane>
