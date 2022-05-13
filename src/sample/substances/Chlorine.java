@@ -22,10 +22,22 @@ public class Chlorine extends Substance{
         this.currentTon = currentTon;
         this.windSpeed = windSpeed;
         switch (windSpeed) {
-            case (1) -> currentEquivalents = this.equivalentsWindSpeed1;
-            case (2) -> currentEquivalents = this.equivalentsWindSpeed2;
-            case (3) -> currentEquivalents = this.equivalentsWindSpeed3;
-            case (4) -> currentEquivalents = this.equivalentsWindSpeed4;
+            case (1) -> {
+                currentEquivalents = this.equivalentsWindSpeed1;
+                fi = 180;
+            }
+            case (2) -> {
+                currentEquivalents = this.equivalentsWindSpeed2;
+                fi = 90;
+            }
+            case (3) -> {
+                currentEquivalents = this.equivalentsWindSpeed3;
+                fi = 45;
+            }
+            case (4) -> {
+                currentEquivalents = this.equivalentsWindSpeed4;
+                fi = 45;
+            }
         }
     }
 
@@ -57,6 +69,20 @@ public class Chlorine extends Substance{
         if (GPredel > GCurrent) return GCurrent;
         else return GPredel;
     }
+
+    @Override
+    public double PossibleSquare() {
+        double gp = Gp();
+        return 8.72 * Math.pow(10, -3)*gp*gp*fi;
+    }
+
+    @Override
+    public double FactSquare() {
+        double gp = Gp();
+        return k8*gp*gp*Math.pow(N, 0.2);
+    }
+
+
 
     public void setCurrentEquivalents() {
         switch (windSpeed) {

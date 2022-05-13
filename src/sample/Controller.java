@@ -281,7 +281,8 @@ public class Controller {
     }
 
     private void drawInfection() {
-        Ellipse ellipse = new Ellipse();
+        Ellipse factEllipse = new Ellipse();
+        Ellipse possibleEllipse = new Ellipse();
         Substance substance;
 
         if (infectionChlorine) {
@@ -293,9 +294,11 @@ public class Controller {
 //        this.substance.setWindSpeed(this.windSpeed);
 //        this.substance.setCurrentTon(this.currentWeight);
 
-        ellipse.setCenterX(this.startX - 15);ellipse.setCenterY(this.startY - 7);
+        factEllipse.setCenterX(this.startX - 15);factEllipse.setCenterY(this.startY - 7);
+        possibleEllipse.setCenterX(this.startX - 15);possibleEllipse.setCenterY(this.startY - 7);
 
-        double radius = substance.Gp();
+        double factRadius = substance.getRadius(substance.FactSquare());
+        double possibleRadius = substance.getRadius(substance.PossibleSquare());
 
         double onePixelToDegree = 0.01666666666;
         double YdolgotaKmInOneMinute = 1.85224768519;
@@ -304,15 +307,19 @@ public class Controller {
 //        double xRad = (Math.abs(onePixelToDegree - radius)) * ((111.3 * (Math.cos(finalCordX))) / 60);
 //        double yRad = (Math.abs(onePixelToDegree - radius) * onePixelToDegree) * YdolgotaKmInOneMinute;
 
-        double xRadius = ((radius/10) / onePixelToDegree) / (71.1 / 60);
-        double yRadius = ((radius/10) / onePixelToDegree) / YdolgotaKmInOneMinute;
+        double factXRadius = ((factRadius/10) / onePixelToDegree) / (71.1 / 60);
+        double factYRadius = ((factRadius/10) / onePixelToDegree) / YdolgotaKmInOneMinute;
 
-        System.out.println(radius);
+        double possibleXRadius = ((possibleRadius/10) / onePixelToDegree) / (71.1 / 60);
+        double possibleYRadius = ((possibleRadius/10) / onePixelToDegree) / YdolgotaKmInOneMinute;
 
-        ellipse.setRadiusX(xRadius);ellipse.setRadiusY(yRadius);
-        ellipse.setFill(Color.LIGHTGREEN);
+        factEllipse.setRadiusX(factXRadius);factEllipse.setRadiusY(factYRadius);
+        factEllipse.setFill(Color.LIGHTGREEN);
+        possibleEllipse.setRadiusX(possibleXRadius);possibleEllipse.setRadiusY(possibleYRadius);
+        possibleEllipse.setFill(Color.ORANGE);
 
-        objectsGroup.getChildren().add(ellipse);
+        objectsGroup.getChildren().add(possibleEllipse);
+        objectsGroup.getChildren().add(factEllipse);
     }
 
     //////////////////////////////////////////////////////////////////////

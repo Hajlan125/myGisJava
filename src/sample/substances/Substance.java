@@ -11,6 +11,8 @@ public abstract class Substance {
     //время от начал аварии
     Integer N = 2;
 
+    Integer fi;
+
     ArrayList<Double> list = new ArrayList<>() {{add(1.0);add(0.23);add(0.08);}};
 
 //    double k4 = 1.67;
@@ -24,6 +26,7 @@ public abstract class Substance {
 
     //list.get(new Random().nextInt(list.size()))
     double k5 = 1;
+    double k8 = 0.081;
 
     double h = 0.05;
 
@@ -110,6 +113,20 @@ public abstract class Substance {
 
     public double Gp() {
         return 0;
+    }
+    public double PossibleSquare() {
+        double gp = Gp();
+        return 8.72 * Math.pow(10, -3)*gp*gp*fi;
+    }
+
+    public double FactSquare() {
+        return k8*Gp()*Math.pow(N, 0.2);
+    }
+
+    public double getRadius(double square) {
+        return Math.sqrt(
+                square / Math.PI
+        );
     }
 
     public void setCurrentTon(double currentTon) {
